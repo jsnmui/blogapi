@@ -4,11 +4,11 @@ const UserModel = require('../models/userSchema')
 const {check, validationResult} = require('express-validator')
 const bcrypt =require('bcrypt')
 const jwt = require('jsonwebtoken')
- 
+const authMiddleware = require('../middleware/authMiddleware')
 // * Create a Router
 const router = express.Router()
 
-router.get('/', async (req,res) => {
+router.get('/',authMiddleware,async (req,res) => {
  
        try {
             const users = await UserModel.find()
@@ -20,6 +20,30 @@ router.get('/', async (req,res) => {
     
 })
 
+//* UPDATE USER BY ID
+router.put('/:id',authMiddleware ,async (req, res) => {
+    const id = req.params.id
+    const newUserData = req.body
+     try {
+         //* find the BLOG by the id
+         const user = await blogModel.findByIdAndUpdate(id, newUserData, {new: true})
+         res.status(202).json(user)
+     } catch (error) {
+         console.log(error)
+     }
+})
+
+//! DELETE A USER
+router.delete('/:id', authMiddleware,async (req, res) => {
+    const id = req.params.id
+
+    try {
+        const user= await blogModel.findByIdAndDelete(id)
+        res.status(200).json( {msg: `User # ${id} was deleted`})
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 
 
