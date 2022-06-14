@@ -13,9 +13,21 @@ router.get('/', authMiddleware,async (req,res) => {
     } catch (error) {
         console.log(error)
 }
-
-
 })
+
+
+//* Get NONPRIVATE Blogs
+router.get('/nonprivate', authMiddleware,async (req,res) => {
+    try {
+        const blogs = await blogModel.find({ private: false })
+        res.status(200).json(blogs)
+    } catch (error) {
+        console.log(error)
+}
+})
+
+
+
 
 //* CREATE BLOGS
 router.post('/',authMiddleware, async (req, res) => {
