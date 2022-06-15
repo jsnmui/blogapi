@@ -95,8 +95,7 @@ router.post('/login',[
             return res.json('Password is not a match!')
         }
 
-        //* =========
-      //  res.status(200).json('Success!')
+      
         
        //* Create a new JWT Token
 

@@ -10,8 +10,8 @@ module.exports = (req,res,next) => {
     //If we have a token
     try{
         const decoded =jwt.verify(token, process.env.SECRET_KEY,{ expired: "2 Days"})   
-       
-        console.log(decoded);
+        req.user=decoded
+     
 
         next()
     } catch (error) {
