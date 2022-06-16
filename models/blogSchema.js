@@ -2,6 +2,12 @@ const mongoose = require('mongoose')
 
 
 const blogSchema = mongoose.Schema({
+    creator_id:{
+        type: mongoose.Schema.Types.ObjectId,    // links the blog to user
+        ref: 'user'                              // refers to the user model
+
+    },
+
     created_by: {
         type: String,
         required: true

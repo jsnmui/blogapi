@@ -10,9 +10,7 @@ module.exports = (req,res,next) => {
     //If we have a token
     try{
         const decoded =jwt.verify(token, process.env.SECRET_KEY,{ expired: "2 Days"})   
-        req.user=decoded
-     
-
+        req.user=decoded   //save user token which can then be used in other routes
         next()
     } catch (error) {
         console.log(error);

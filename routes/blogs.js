@@ -32,7 +32,7 @@ router.get('/nonprivate', authMiddleware,async (req,res) => {
 //* CREATE BLOGS
 router.post('/',authMiddleware, async (req, res) => {
     const blogData = req.body // gets the data from the request
-    // console.log(todoData)
+    blogData.creator_id = req.user.id  // insert creator id into body
 
     try {
         const blog = await blogModel.create(blogData) // create the blog in the db
