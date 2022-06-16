@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const commentsSchema = mongoose.Schema({
+const likesSchema = mongoose.Schema({
     blog_entry_id: {
         type: mongoose.Schema.Types.ObjectId,    // links the comment to the blog
         ref: 'blog',                              // refers to blog model in schema
@@ -12,31 +12,12 @@ const commentsSchema = mongoose.Schema({
         ref: 'user'                              // refers to the user model
     },
 
-    created_at: {
-        type: Date,
-        required: true
-    },
-   
-    comment: {
-        type: String,
-        required: true
+    like: {
+        type: Boolean,
+        required: false
     },
 
    
 })
 
-module.exports = mongoose.model('comments', commentsSchema)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = mongoose.model('like', likesSchema)

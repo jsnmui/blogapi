@@ -4,8 +4,8 @@ const mongoose = require('mongoose')
 const blogSchema = mongoose.Schema({
     creator_id:{
         type: mongoose.Schema.Types.ObjectId,    // links the blog to user
-        ref: 'user'                              // refers to the user model
-
+        ref: 'user' ,                             // refers to the user model
+        required: true 
     },
 
     created_by: {
@@ -26,6 +26,11 @@ const blogSchema = mongoose.Schema({
     blog_content: {
         type: String,
         required: true
+    },
+
+    likes:{
+        type: Number,
+        default: 0
     },
 
     private: {

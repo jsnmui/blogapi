@@ -1,6 +1,7 @@
-const { response } = require('express')
+
 const express = require('express')
 const blogModel =require('../models/blogSchema')
+const likeModel = require('../models/likesSchema')
 const authMiddleware = require('../middleware/authMiddleware')
 //* Create a Router
 const router = express.Router()
@@ -26,6 +27,27 @@ router.get('/nonprivate', authMiddleware,async (req,res) => {
 }
 })
 
+router.post('/like/:id', authMiddleware,async (req,res) => {
+    const id = req.params.id
+    let blog = ""
+    try {
+         //* find the BLOG by the id
+         //* allow user to like a blog post only once
+        let like = await likeModel.find({ blog_entry_id: id, created_by: req.user.id }) // look for a record of like for this blog post for this user
+        console.log(like)
+        if (like.length == 0) {
+           like = await likeModel.create({ blog_entry_id: id, created_by: req.user.id, like: true}) // create a like object to record a like for the post
+           blog = await blogModel.findByIdAndUpdate(id,  { $inc: { likes: 1 } })
+            res.status(202).json(blog)
+        } else {
+          blog = await blogModel.findById(id)
+            res.status(202).json(blog)
+          }
+       } catch (error) {
+         console.log(error)
+      }
+
+})
 
 
 
@@ -33,7 +55,7 @@ router.get('/nonprivate', authMiddleware,async (req,res) => {
 router.post('/',authMiddleware, async (req, res) => {
     const blogData = req.body // gets the data from the request
     blogData.creator_id = req.user.id  // insert creator id into body
-
+    
     try {
         const blog = await blogModel.create(blogData) // create the blog in the db
         // send back the response
@@ -65,9 +87,14 @@ router.get('/:id', authMiddleware,async (req, res) => {
 router.put('/:id',authMiddleware ,async (req, res) => {
     const id = req.params.id
     const newBlogData = req.body
-     try {
+    console.log(req.user.id)
+    if (newBlogData.creator_id !== req.user.id) { // only original creator can change blog content
+       return res.status(400).json({msg: 'Not Authorized to Change this Blog'})
+    }
+    
+    try {
          //* find the BLOG by the id
-         const blog = await blogModel.findByIdAndUpdate(id, newBlogData, {new: true})
+         const blog = await blogModel.findByIdAndUpdate(id, newBlogData)
          res.status(202).json(blog)
      } catch (error) {
          console.log(error)
