@@ -27,6 +27,7 @@ router.get('/nonprivate', authMiddleware,async (req,res) => {
 }
 })
 
+// Like a blog post
 router.put('/like/:id', authMiddleware,async (req,res) => {
     const id = req.params.id
     let blog = ""
