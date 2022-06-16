@@ -37,13 +37,13 @@ router.put('/like/:id', authMiddleware,async (req,res) => {
         let like = await likeModel.find({ blog_entry_id: id, created_by: req.user.id }) // look for a record of like for this blog post for this user
         
         if (like.length === 0) {
-           like = await likeModel.create({ blog_entry_id: id, created_by: req.user.id, like: true}) // create a like object to record a like for the post
-           blog = await blogModel.findByIdAndUpdate(id,  { $inc: { likes: 1 }}, {new:true} )
-          res.status(202).json(blog)
-        } else {
-          blog = await blogModel.findById(id)
+            like = await likeModel.create({ blog_entry_id: id, created_by: req.user.id, like: true}) // create a like object to record a like for the post
+            blog = await blogModel.findByIdAndUpdate(id,  { $inc: { likes: 1 }}, {new:true} )
             res.status(202).json(blog)
-          }
+        } else {
+            blog = await blogModel.findById(id)
+            res.status(202).json(blog)
+        }
        } catch (error) {
          console.log(error)
       }
