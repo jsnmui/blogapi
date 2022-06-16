@@ -36,7 +36,7 @@ router.post('/:id',authMiddleware, async (req, res) => {
 //! DELETE A Cooment
 router.delete('/:id', authMiddleware,async (req, res) => {
     const id = req.params.id
-
+    
     try {
         const comments= await commentsModel.findByIdAndDelete(id)
         res.status(200).json( {msg: `Comment # ${id} was deleted`})

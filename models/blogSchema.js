@@ -32,7 +32,7 @@ const blogSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-
+   
     private: {
         type: Boolean,
         required: true
