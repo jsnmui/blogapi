@@ -40,13 +40,13 @@ router.put('/like/:id', authMiddleware,async (req,res) => {
             
              if(element.created_by.toString() === req.user.id){
                 found = true 
-                if (element.like === false) {
-                        element.like = true
-                        blog.likes++
-
-                    } else  {
+                if (element.like === true) {
                         element.like = false
                         blog.likes--
+
+                    } else  {
+                        element.like = true
+                        blog.likes++
                     }
 
                  }
