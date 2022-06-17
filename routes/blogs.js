@@ -35,11 +35,11 @@ router.put('/like/:id', authMiddleware,async (req,res) => {
          //* allow user to like a blog post only once
         let blog = await blogModel.findById(id)// find the blog
         let found = false                  
-             blog.likesHistory.forEach(element => {
+             blog.likesHistory.forEach(element => {            // search like history to determine is user already liked post
             
              if(element.created_by.toString() === req.user.id){
                 found = true 
-                if (element.like === true) {                          
+                if (element.like === true) {                   //toggle       
                         element.like = false
                         blog.likes--
 
