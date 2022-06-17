@@ -10,7 +10,7 @@ const auth = require('./routes/auth')
 
 
 const app = express()
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 app.use(express.json()) //parse into json file read from req.body data coming in
 app.use(morgan('dev'))
