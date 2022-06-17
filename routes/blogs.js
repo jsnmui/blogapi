@@ -41,7 +41,7 @@ router.put('/like/:id', authMiddleware,async (req,res) => {
                 blog = await blogModel.findByIdAndUpdate(id,  { $inc: { likes: 1 }}, {new:true} )
                 res.status(202).json(blog)
         } else {
-            // incrment counter by one or decrease by one
+            // increment counter by one or decrease by one
             if(like[0].like === true ){    // if already true then set boolean in 'like' object to false and decrement like counter by one
                await likeModel.findByIdAndUpdate(like[0]._id.toString(),{like: false}, {new:true})
                blog = await blogModel.findByIdAndUpdate(id,  { $inc: { likes: -1 }}, {new:true} )
