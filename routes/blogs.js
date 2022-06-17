@@ -34,14 +34,22 @@ router.put('/like/:id', authMiddleware,async (req,res) => {
     try {
          //* find the BLOG by the id
          //* allow user to like a blog post only once
-        let like = await likeModel.find({ blog_entry_id: id, created_by: req.user.id }) // look for a record of like for this blog post for this user
-        
+        let like = await likeModel.find({ blog_entry_id: id, created_by: req.user.id }) // search for a record of 'like' for this blog post for this user
+        console.log(like)
         if (like.length === 0) {
-            like = await likeModel.create({ blog_entry_id: id, created_by: req.user.id, like: true}) // create a like object to record a like for the post
-            blog = await blogModel.findByIdAndUpdate(id,  { $inc: { likes: 1 }}, {new:true} )
-            res.status(202).json(blog)
+                like = await likeModel.create({ blog_entry_id: id, created_by: req.user.id, like: true}) // create a like object to record a like for the post
+                blog = await blogModel.findByIdAndUpdate(id,  { $inc: { likes: 1 }}, {new:true} )
+                res.status(202).json(blog)
         } else {
-            blog = await blogModel.findById(id)
+            // incrment counter by one or decrease by one
+            if(like[0].like === true ){    // if already true then set boolean in 'like' object to false and decrement like counter by one
+               await likeModel.findByIdAndUpdate(like[0]._id.toString(),{like: false}, {new:true})
+               blog = await blogModel.findByIdAndUpdate(id,  { $inc: { likes: -1 }}, {new:true} )
+           } else {        // if already false set boolean in 'like' object to true and increment like counter by one
+               await likeModel.findByIdAndUpdate(like[0]._id.toString(), {like: true}, {new:true})
+               blog = await blogModel.findByIdAndUpdate(id,  { $inc: { likes: 1 }, }, {new:true} )
+             }
+
             res.status(202).json(blog)
         }
        } catch (error) {
