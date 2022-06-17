@@ -29,6 +29,25 @@ const blogSchema = mongoose.Schema({
         required: true
     },
 
+    comments: [{
+           
+        creator_id: {
+            type: mongoose.Schema.Types.ObjectId,    // links the comment to user
+            ref: 'user'                              // refers to the user model
+        },
+    
+        created_at: {
+            type: Date,
+            default: Date.now()
+        },
+       
+        comment: {
+            type: String
+            
+        }
+    
+    }],
+
     likes:{
         type: Number,
         default: 0

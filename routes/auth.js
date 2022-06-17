@@ -48,7 +48,7 @@ router.post('/registration', [
             email: user.email
         }
 
-        //const SECRET_KEY='MY_SECRET_KEY'
+        
 
         const TOKEN = jwt.sign(payload, process.env.SECRET_KEY)
 
@@ -104,7 +104,7 @@ router.post('/login',[
             email: user.email
         }
 
-        const TOKEN = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "2 Days"})
+        const TOKEN = jwt.sign(payload, process.env.SECRET_KEY)
 
         res.status(201).json({
             user: user,

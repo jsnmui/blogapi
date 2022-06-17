@@ -7,7 +7,7 @@ const mongoConfig =require('./config/mongoConfig')
 const blogs = require('./routes/blogs')
 const users = require('./routes/users')
 const auth = require('./routes/auth')
-const comments = require('./routes/comments')
+
 
 const app = express()
 const PORT = 5000
@@ -20,7 +20,7 @@ app.use(helmet())
 app.use('/blogs', blogs)  
 app.use('/users', users)
 app.use('/auth', auth)
-app.use('/comments',comments)
+
 //* Root route for the APP
 app.get('/', (req, res) => {
     res.status(200).json('Welcome to my API')
