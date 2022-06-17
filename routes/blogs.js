@@ -1,7 +1,6 @@
 
 const express = require('express')
 const blogModel =require('../models/blogSchema')
-const likeModel = require('../models/likesSchema')
 const authMiddleware = require('../middleware/authMiddleware')
 //* Create a Router
 const router = express.Router()
@@ -35,12 +34,12 @@ router.put('/like/:id', authMiddleware,async (req,res) => {
          //* find the BLOG by the id
          //* allow user to like a blog post only once
         let blog = await blogModel.findById(id)// find the blog
-        let found = false
+        let found = false                  
              blog.likesHistory.forEach(element => {
             
              if(element.created_by.toString() === req.user.id){
                 found = true 
-                if (element.like === true) {
+                if (element.like === true) {                          
                         element.like = false
                         blog.likes--
 
@@ -57,7 +56,6 @@ router.put('/like/:id', authMiddleware,async (req,res) => {
             let like = { "created_by" : req.user.id, "like": true   }
             blog.likesHistory.push(like)
             blog.likes++
-            console.log (blog.likesHistory.length)
         }
 
         await blogModel.findByIdAndUpdate(id, blog, {new:true})

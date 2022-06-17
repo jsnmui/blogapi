@@ -48,7 +48,7 @@ const blogSchema = mongoose.Schema({
     
     }],
 
-    likesHistory:[{
+    likesHistory:[{                                   //tracks who liked this blog post  
 
         created_by: {
             type: mongoose.Schema.Types.ObjectId,    // links the like to user
