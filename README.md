@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #  A Blog API
 ## About the app
 A Blog API, with full CRUD using NodeJS, Express, Mongoose, and MongoDB.
@@ -79,3 +80,7 @@ Click on the link that was mentioned in 'Link to Hosted Site' and enjoy.
 * Aces can be worth either 11 or 1.
 * Aces have a default value of 11 unless that would result in a total score over 21. In that case, it is worth 1 point.
 
+=======
+# My blogapi
+https://jmui-blog.herokuapp.com/
+>>>>>>> 2449b35eceb73c352c1ced4dc7b5eeb7495ef55f
