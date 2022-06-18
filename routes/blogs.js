@@ -57,8 +57,8 @@ router.put('/like/:id', authMiddleware,async (req,res) => {
             blog.likesHistory.push(like)
             blog.likes++
         }
-
-        await blogModel.findByIdAndUpdate(id, blog, {new:true})
+       
+            blog.save()     // save update to database
             res.status(202).json(blog)
        // }
        } catch (error) {
@@ -111,7 +111,7 @@ router.put('/:id',authMiddleware ,async (req, res) => {
          const blogtoUpdate = await blogModel.findById(id) 
          
          if (blogtoUpdate.creator_id.toString()  !==  req.user.id ) {
-             return res.status(400).json({msg: 'Not Authorized ! '})
+             return res.status(400).json({msg: 'Not Authorized ! '})   // check to see if user logged in is the author of the blog
          }
 
          //* find the BLOG by the id
