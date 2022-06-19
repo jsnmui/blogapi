@@ -98,8 +98,8 @@ router.delete('/:id', authMiddleware,async (req, res) => {
 })
 
 // Like a blog post
-router.put('/like/:id', authMiddleware,async (req,res) => {
-    const id = req.params.id
+router.put('/like/:blogid', authMiddleware,async (req,res) => {
+    const id = req.params.blogid
    
     try {
          //* find the BLOG by the id
@@ -135,12 +135,12 @@ router.put('/like/:id', authMiddleware,async (req,res) => {
 })
 
 // Find all posts liked by a user
-router.get('/like/:id', authMiddleware,async (req,res) => {
+router.get('/like/:userid', authMiddleware,async (req,res) => {
     
    try {
          //* find the blogs liked by user in id parameter
         
-        let blog = await blogModel.find({ "likesHistory.user_id": req.params.id, "likesHistory.like": true })// find the blogs like by a user
+        let blog = await blogModel.find({ "likesHistory.user_id": req.params.userid, "likesHistory.like": true })// find the blogs like by a user
        
          res.status(202).json(blog)
        
