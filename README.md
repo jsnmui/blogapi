@@ -7,30 +7,30 @@ This game is deployed on Heroku at [BlogAPI](https://jmui-blog.herokuapp.com/ "B
 
 ## Technologies Used
 ### Server
-#### Node.js - an open source asynchronous event-driven server environment that executes JavaScript code outside a web browser. 
-#### Express - a back end web application framework for Node.js
-#### nodemon -  a monitoring tool that automatically restart  node application when file changes in the directory are detected
+* Node.js - an open source asynchronous event-driven server environment that executes JavaScript code outside a web browser. 
+* Express - a back end web application framework for Node.js
+* nodemon -  a monitoring tool that automatically restart  node application when file changes in the directory are detected
 
 ### Database 
-#### MongoDB - a non-relational document database that stores data in a format similar to Javascript Object Notation.
-#### Mongoose - a JavaScript library that creates a connection between MongoDB and the Express web application framework.
+* MongoDB - a non-relational document database that stores data in a format similar to Javascript Object Notation.
+* Mongoose - a JavaScript library that creates a connection between MongoDB and the Express web application framework.
 
 ### Midddleware
-#### MORGAN  - an Express middleware to log HTTP requests and errors, and simplifies the process.
-#### HELMET  - an Express middleware that helps secure HTTP headers returned by an Express apps.
-#### Express-Validator - an express middleware that provides validation and sanitization functions
+* MORGAN  - an Express middleware to log HTTP requests and errors, and simplifies the process.
+* HELMET  - an Express middleware that helps secure HTTP headers returned by an Express apps.
+* Express-Validator - an express middleware that provides validation and sanitization functions
 
 ### Encryption
-#### Bcrypt  - a library to help you hash passwords.
+* Bcrypt  - a library to help you hash passwords.
 
 ### Tokens
-#### jsonwebtoken - an implementation of JSON Web Tokens.
+* jsonwebtoken - an implementation of JSON Web Tokens.
 
 ### Loading Environmental Variables
-#### dotenv - module that loads environment variables from a .env file into process.env
+* dotenv - module that loads environment variables from a .env file into process.env
 
 ### Testing API
-#### Postman - an API platform for developers to design, build, test and iterate their APIs.
+* Postman - an API platform for developers to design, build, test and iterate their APIs.
 
 ## Environmental Variables
 These variables are needed in the .env file
