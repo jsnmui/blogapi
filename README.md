@@ -78,13 +78,43 @@ These variables are needed in the .env file
 In server.js, root route for the app.get(/) returns "Welcome to my API"
 
 #### auth route for login and registration
-* router.post('/registration') - register new users. userSchema is used. PAssword hasehd with bcrypt.hash. Token generated with jwt.sign. 
-* router.post('/login') - login with user's email and password. Token generated with jwt.sign
+* router.post('/registration') - Register new users. userSchema is used. PAssword hasehd with bcrypt.hash. Token generated with jwt.sign. 
+* router.post('/login') - Login with user's email and password. Token generated with jwt.sign
 
 #### users route
-* router.get('/') - gets all users. Protected with token.
-* router.put('/:id') - updates a user. Protected with token. Check id parameter to see if the user is owner of the account and updates user information. 
-* router.delete('/:id') - deletes a user.  Protected with token. Check id parameter to see if the user is owner of the account and deletes user account.
+* router.get('/') - Must be a registered user with a valid token to get all users.
+* router.get('/:id') - Get a user by setting parameter id to the user's id. Must be a registered user with a valid token.
+* router.put('/:id') - Updates a user. Must be a registered user with a valid token. Check id parameter to see if the user is owner of the account and updates user information. 
+* router.delete('/:id') - Deletes a user.  Protected with token. Check id parameter to see if the user is owner of the account and deletes user account.
 
 
 #### blogs route
+* route.get('/') - Retrieves all blogs. User must be registered and have a valid token
+* router.get('/nonprivate') - Gets public blogs. Doesn't require registration token.
+* router.post('/') - Creates a new blog post. User needs to be registered and have a valid token.
+* router.get('/:id') - Get a blogs by sending the blog id as the parameter. User needs to be registered and have a valid token.
+* router.put('/:id') - Update a blog by sending the blog id as the parameter. User needs to be registered and have a valid token.
+* router.delete('/:id') - Delete a blog by sending the blog id as the parameter. User needs to be registered and have a valid token.
+* router.put('/like/:id') - Allows a registered user to like a blog post and increase the like counter for a post.  Each user can like a post only once. Takes the blog id as the parameter. A user can like a post by sending the id. A user can remove the same like by sending the id again. 
+
+### Schemas
+## userSchema
+* username: type: String, required: true
+* email: type: String, required: true, unique: true
+* birthday: type: Date, required: true
+* age:  type: Number
+* password: type: String, required: true
+
+## blogSchema
+* creator_id: type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true 
+* created_by: type: String, required: true
+* created_at: type: Date, required: true, default: Date.now()
+* blog_title: type: String,required: true
+* blog_content: type: String,required: true
+* comments: [creator_id: type: mongoose.Schema.Types.ObjectId, ref:'user', created_at: type: Date, default: Date.now(), comment: type: String]
+* likesHistory:[user_id: type: mongoose.Schema.Types.ObjectId, ref: 'user', like: type: Boolean]
+* likes: type: Number, default: 0
+* private: type: Boolean, required: true
+    
+
+  

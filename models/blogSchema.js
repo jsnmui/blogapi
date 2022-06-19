@@ -52,19 +52,16 @@ const blogSchema = mongoose.Schema({
 
         user_id: {
             type: mongoose.Schema.Types.ObjectId,    // links the like to user
-            ref: 'user'                              // refers to the user model
+            ref: 'user',
+            required: true                              // refers to the user model
         },
     
         like: {
-            type: Boolean,
-            required: false
-        },
-    
-
-
+            type: Boolean
+        }
     }],
 
-    likes:{
+    likes:{                                       // likes counter
         type: Number,
         default: 0
     },
