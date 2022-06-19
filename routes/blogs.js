@@ -26,45 +26,6 @@ router.get('/nonprivate', async (req,res) => {
 }
 })
 
-// Like a blog post
-router.put('/like/:id', authMiddleware,async (req,res) => {
-    const id = req.params.id
-   
-    try {
-         //* find the BLOG by the id
-         //* allow user to like a blog post only once
-        let blog = await blogModel.findById(id)// find the blog
-        let found = false                  
-             blog.likesHistory.forEach(element => {            // search like history to determine is user already liked post
-               if(element.user_id.toString() === req.user.id){
-                found = true 
-                if (element.like === true) {                   //toggle       
-                        element.like = false
-                        blog.likes--
-                } else  {
-                        element.like = true
-                        blog.likes++
-                    }
-                 }
-              }) 
-                  
-         if (found === false ) {
-            let like = { "user_id" : req.user.id, "like": true   }
-            blog.likesHistory.push(like)
-            blog.likes++
-        }
-       
-            blog.save()     // save update to database
-            res.status(202).json(blog)
-       // }
-       } catch (error) {
-         console.log(error)
-      }
-
-})
-
-
-
 //* CREATE BLOGS
 router.post('/',authMiddleware, async (req, res) => {
     const blogData = req.body // gets the data from the request
@@ -136,6 +97,58 @@ router.delete('/:id', authMiddleware,async (req, res) => {
     }
 })
 
+// Like a blog post
+router.put('/like/:id', authMiddleware,async (req,res) => {
+    const id = req.params.id
+   
+    try {
+         //* find the BLOG by the id
+         //* allow user to like a blog post only once
+        let blog = await blogModel.findById(id)// find the blog
+        let found = false                  
+             blog.likesHistory.forEach(element => {            // search like history to determine is user already liked post
+               if(element.user_id.toString() === req.user.id){
+                found = true 
+                if (element.like === true) {                   //toggle       
+                        element.like = false
+                        blog.likes--
+                } else  {
+                        element.like = true
+                        blog.likes++
+                    }
+                 }
+              }) 
+                  
+         if (found === false ) {
+            let like = { "user_id" : req.user.id, "like": true   }
+            blog.likesHistory.push(like)
+            blog.likes++
+        }
+       
+            blog.save()     // save update to database
+            res.status(202).json(blog)
+       // }
+       } catch (error) {
+         console.log(error)
+      }
+
+})
+
+// Find all posts liked by a user
+router.get('/like/:id', authMiddleware,async (req,res) => {
+    
+   try {
+         //* find the blogs liked by user in id parameter
+        
+        let blog = await blogModel.find({ "likesHistory.user_id": req.params.id, "likesHistory.like": true })// find the blogs like by a user
+       
+         res.status(202).json(blog)
+       
+       } catch (error) {
+         console.log(error)
+      }
+
+})
 
 
 module.exports = router

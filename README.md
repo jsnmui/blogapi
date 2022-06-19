@@ -90,6 +90,7 @@ In server.js, root route for the app.get(/) returns "Welcome to my API"
 * router.put('/:id') - Update a blog by sending the blog id as the parameter. User needs to be registered and have a valid token.
 * router.delete('/:id') - Delete a blog by sending the blog id as the parameter. User needs to be registered and have a valid token.
 * router.put('/like/:id') - Allows a registered user to like a blog post and increase the like counter for a post.  Each user can like a post only once. Takes the blog id as the parameter. A user can like a post by sending the id. A user can remove the same like by sending the id again. 
+* router.get('/like/:id') - Allows a registered user to find all blog posts liked by another user. Takes a user id as a paramter. 
 
 ### Schemas
 #### userSchema
