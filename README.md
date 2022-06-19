@@ -23,7 +23,7 @@ This app is deployed on Heroku at [BlogAPI](https://jmui-blog.herokuapp.com/ "Bl
 * Bcrypt  - a library to help you hash passwords.
 
 ### Tokens
-* jsonwebtoken - an implementation of JSON Web Tokens.
+* jsonwebtoken - an implementation of JSON Web Token (JWT), which is encoded data that is cryptographically signed with a secret value that can act like a "key". It can be sent to a client as proof of authenticity and sent back to the server on subsequent requests as proof of the client's authenticity.
 
 ### Loading Environmental Variables
 * dotenv - module that loads environment variables from a .env file into process.env
@@ -78,7 +78,7 @@ These variables are needed in the .env file
 In server.js, root route for the app.get(/) returns "Welcome to my API"
 
 #### auth route for login and registration
-* router.post('/registration') - Register new users. userSchema is used. PAssword hasehd with bcrypt.hash. Token generated with jwt.sign. 
+* router.post('/registration') - Register new users. userSchema is used. Password hasehd with bcrypt.hash. Token generated with jwt.sign. 
 * router.post('/login') - Login with user's email and password. Token generated with jwt.sign
 
 #### users route
@@ -116,5 +116,8 @@ In server.js, root route for the app.get(/) returns "Welcome to my API"
 * likes: type: Number, default: 0
 * private: type: Boolean, required: true
     
-
+## authMiddleware
+* Token taken from req.header('x-auth-token'). In Postman, x-auth-token was set to the token generated at users/login or users/registration routes.
+* Token is verified using the jwt.verify method and the unique SECRET_KEY.
+* Decoded data that is returned from jwt.verify is stored in req.user to be used in protected routes.
   
