@@ -9,7 +9,6 @@ This app is deployed on Heroku at [BlogAPI](https://jmui-blog.herokuapp.com/ "Bl
 ### Server
 * Node.js - an open source asynchronous event-driven server environment that executes JavaScript code outside a web browser. 
 * Express - a back end web application framework for Node.js
-* nodemon -  a monitoring tool that automatically restarts node application when file changes in the directory are detected
 
 ### Database 
 * MongoDB - a non-relational document database that stores data in a format similar to Javascript Object Notation.
@@ -37,7 +36,7 @@ These variables are needed in the .env file
 * MONGODB_URI
 * SECRET_KEY
 
-## Installation Instructions
+## Installation Instructions to Run Locally
 
 ### Get Git Bash 
 1. Download the Git Bash setup from: https://git-scm.com/
@@ -56,8 +55,11 @@ These variables are needed in the .env file
 2. Download the correct installer for your system
 3. Run the installer
 
-### Nodemon
-Install nodemon globally with npm install -g nodemon
+### MongoDB
+1. Create account on https://www.mongodb.com/
+2. Create a new cluster.
+3. Click connect to get connection string,
+4. Add connection string to MONGODB_URI in .env file.
 
 ### Install dependencies
 1. In Git Bash terminal, type npm init -y
