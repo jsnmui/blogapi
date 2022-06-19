@@ -50,7 +50,7 @@ const blogSchema = mongoose.Schema({
 
     likesHistory:[{                                   //tracks who liked this blog post  
 
-        created_by: {
+        user_id: {
             type: mongoose.Schema.Types.ObjectId,    // links the like to user
             ref: 'user'                              // refers to the user model
         },

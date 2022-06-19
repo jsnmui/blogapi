@@ -71,5 +71,11 @@ Install nodemon globally with npm install -g nodemon
 * helmet
 * express-validator
 
+## Endpoints, Parameters, Schema
+### Routes
+In server.js, root route for the app.get(/) returns "Welcome to my API"
 
+#### Auth route for login and registration
+* router.post('/registration') - register new users. userSchema is used.
+* 
 

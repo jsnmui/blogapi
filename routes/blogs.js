@@ -36,24 +36,20 @@ router.put('/like/:id', authMiddleware,async (req,res) => {
         let blog = await blogModel.findById(id)// find the blog
         let found = false                  
              blog.likesHistory.forEach(element => {            // search like history to determine is user already liked post
-            
-             if(element.created_by.toString() === req.user.id){
+               if(element.user_id.toString() === req.user.id){
                 found = true 
                 if (element.like === true) {                   //toggle       
                         element.like = false
                         blog.likes--
-
-                    } else  {
+                } else  {
                         element.like = true
                         blog.likes++
                     }
-
                  }
-             
-             }) 
+              }) 
                   
          if (found === false ) {
-            let like = { "created_by" : req.user.id, "like": true   }
+            let like = { "user_id" : req.user.id, "like": true   }
             blog.likesHistory.push(like)
             blog.likes++
         }
