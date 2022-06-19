@@ -23,7 +23,7 @@ This app is deployed on Heroku at [BlogAPI](https://jmui-blog.herokuapp.com/ "Bl
 * Bcrypt  - a library to help you hash passwords.
 
 ### Tokens
-* jsonwebtoken - an implementation of JSON Web Token (JWT), which is encoded data that is cryptographically signed with a secret value that can act like a "key". It can be sent to a client as proof of authenticity and sent back to the server on subsequent requests as proof of the client's authenticity.
+* jsonwebtoken - an implementation of JSON Web Token (JWT), which is a standard for sharing security information between a client and a server. Each JWT contains encoded data that is cryptographically signed with a secret value that can act like a "key". It can be sent to a client as proof of authenticity and sent back to the server on subsequent requests as proof of the client's authenticity.
 
 ### Loading Environmental Variables
 * dotenv - module that loads environment variables from a .env file into process.env
