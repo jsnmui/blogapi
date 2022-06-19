@@ -17,7 +17,7 @@ router.get('/', authMiddleware,async (req,res) => {
 
 
 //* Get NONPRIVATE Blogs
-router.get('/nonprivate', authMiddleware,async (req,res) => {
+router.get('/nonprivate', async (req,res) => {
     try {
         const blogs = await blogModel.find({ private: false })
         res.status(200).json(blogs)
