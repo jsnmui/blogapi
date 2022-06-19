@@ -42,12 +42,12 @@ These variables are needed in the .env file
 1. Create a folder for project on your local machine.
 2. Open a bash shell.
 3. cd into folder that was created in step 1
-3. In the terminal type  git clone https://github.com/jsnmui/blogapi.git
+3. In the terminal type: git clone https://github.com/jsnmui/blogapi.git 
 
 ### Node.js
 1. Go to https://nodejs.org/en/download/
-2. Download the correct installer for your system
-3. Run the installer
+2. Download the correct installer for your system.
+3. Run the installer.
 
 ### MongoDB
 1. Create account on https://www.mongodb.com/
@@ -57,7 +57,7 @@ These variables are needed in the .env file
 
 ### Install dependencies
 1. In Git Bash terminal, type npm init -y
-2. type npm install and then the following:
+2. Type 'npm install' before each of the following:
 * express
 * mongoose
 * bcrypt
