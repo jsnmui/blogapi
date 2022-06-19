@@ -119,5 +119,5 @@ In server.js, root route for the app.get(/) returns "Welcome to my API"
 ## authMiddleware
 * Token taken from req.header('x-auth-token'). In Postman, x-auth-token was set to the token generated at users/login or users/registration routes.
 * Token is verified using the jwt.verify method and the unique SECRET_KEY.
-* Decoded data that is returned from jwt.verify is stored in req.user to be used in protected routes.
+* Decoded data that is returned from jwt.verify is saved in req.user to be used in other routes.
   
