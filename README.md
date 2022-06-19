@@ -38,15 +38,9 @@ These variables are needed in the .env file
 
 ## Installation Instructions to Run Locally
 
-### Get Git Bash 
-1. Download the Git Bash setup from: https://git-scm.com/
-2. Download the installer.
-3. Run the .exe file you just downloaded and follow the instructions in the installer.​
-4. Run Git Bash by right-clicking on any folder and selecting the Git Bash Here option from the context menu
-
 ### Clone the project 
-1. Create a folder for project.
-2. Open a Git Bash terminal.
+1. Create a folder for project on your local machine.
+2. Open a bash shell.
 3. cd into folder that was created in step 1
 3. In the terminal type  git clone https://github.com/jsnmui/blogapi.git
 
