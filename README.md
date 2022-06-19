@@ -2,7 +2,7 @@
 #  A Blog API
 ## About the app
 A Blog API, with full CRUD using NodeJS, Express, Mongoose, and MongoDB.  Allows user to register though the auth route, where the user receives a token.  With the token the user can view and create blogs.  The user can update and create the user's own blogs.  The user can also add comments and like a blog.
-This game is deployed on Heroku at [BlogAPI](https://jmui-blog.herokuapp.com/ "BlogAPI")
+This app is deployed on Heroku at [BlogAPI](https://jmui-blog.herokuapp.com/ "BlogAPI")
  
 
 ## Technologies Used
