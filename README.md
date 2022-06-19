@@ -75,7 +75,14 @@ Install nodemon globally with npm install -g nodemon
 ### Routes
 In server.js, root route for the app.get(/) returns "Welcome to my API"
 
-#### Auth route for login and registration
-* router.post('/registration') - register new users. userSchema is used.
-* 
+#### auth route for login and registration
+* router.post('/registration') - register new users. userSchema is used. PAssword hasehd with bcrypt.hash. Token generated with jwt.sign. 
+* router.post('/login') - login with user's email and password. Token generated with jwt.sign
 
+#### users route
+* router.get('/') - gets all users. Protected with token.
+* router.put('/:id') - updates a user. Protected with token. Check id parameter to see if the user is owner of the account and updates user information. 
+* router.delete('/:id') - deletes a user.  Protected with token. Check id parameter to see if the user is owner of the account and deletes user account.
+
+
+#### blogs route

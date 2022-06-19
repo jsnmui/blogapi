@@ -1,4 +1,5 @@
 const express = require('express')
+// pulls out the two function we nee from express validator
 const {check, validationResult} = require('express-validator')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')

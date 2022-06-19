@@ -1,9 +1,5 @@
 const express = require('express')
 const UserModel = require('../models/userSchema')
-// pulls out the two function we nee from express validator
-const {check, validationResult} = require('express-validator')
-const bcrypt =require('bcrypt')
-const jwt = require('jsonwebtoken')
 const authMiddleware = require('../middleware/authMiddleware')
 // * Create a Router
 const router = express.Router()
@@ -25,7 +21,14 @@ router.put('/:id',authMiddleware ,async (req, res) => {
     const id = req.params.id
     const newUserData = req.body
      try {
-         //* find the BLOG by the id
+
+        const usertoUpdate = await UserModel.findById(id) 
+         
+        if (usertoUpdate._id.toString() !==  req.user.id ) {
+            return res.status(400).json({msg: 'Not Authorized ! '})   // check to see if user logged in is the owner of the account
+        }
+
+        //* find the userby the id
          const user = await UserModel.findByIdAndUpdate(id, newUserData, {new: true})
          res.status(202).json(user)
      } catch (error) {
@@ -38,6 +41,13 @@ router.delete('/:id', authMiddleware,async (req, res) => {
     const id = req.params.id
 
     try {
+        
+        const usertoDelete = await UserModel.findById(id) 
+         
+        if (usertoDelete._id.toString() !==  req.user.id ) {
+            return res.status(400).json({msg: 'Not Authorized ! '})   // check to see if user logged in is the owner of the account
+        } 
+
         const user= await UserModel.findByIdAndDelete(id)
         res.status(200).json( {msg: `User # ${id} was deleted`})
     } catch (error) {
