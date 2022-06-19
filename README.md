@@ -98,14 +98,14 @@ In server.js, root route for the app.get(/) returns "Welcome to my API"
 * router.put('/like/:id') - Allows a registered user to like a blog post and increase the like counter for a post.  Each user can like a post only once. Takes the blog id as the parameter. A user can like a post by sending the id. A user can remove the same like by sending the id again. 
 
 ### Schemas
-## userSchema
+#### userSchema
 * username: type: String, required: true
 * email: type: String, required: true, unique: true
 * birthday: type: Date, required: true
 * age:  type: Number
 * password: type: String, required: true
 
-## blogSchema
+#### blogSchema
 * creator_id: type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true 
 * created_by: type: String, required: true
 * created_at: type: Date, required: true, default: Date.now()
