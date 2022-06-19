@@ -14,7 +14,7 @@ This app is deployed on Heroku at [BlogAPI](https://jmui-blog.herokuapp.com/ "Bl
 * MongoDB - a non-relational document database that stores data in a format similar to Javascript Object Notation.
 * Mongoose - a JavaScript library that creates a connection between MongoDB and the Express web application framework.
 
-### Midddleware
+### Middleware
 * MORGAN  - an Express middleware to log HTTP requests and errors, and simplifies the process.
 * HELMET  - an Express middleware that helps secure HTTP headers returned by an Express apps.
 * Express-Validator - an express middleware that provides validation and sanitization functions
@@ -28,7 +28,7 @@ This app is deployed on Heroku at [BlogAPI](https://jmui-blog.herokuapp.com/ "Bl
 ### Loading Environmental Variables
 * dotenv - module that loads environment variables from a .env file into process.env
 
-### Testing API
+### Testing the API
 * Postman - an API platform for developers to design, build, test and iterate their APIs.
 
 ## Environmental Variables
