@@ -135,7 +135,7 @@ router.put('/like/:blogid', authMiddleware,async (req,res) => {
 })
 
 // Find all posts liked by a user
-router.get('/like/:userid', authMiddleware,async (req,res) => {
+router.get('/likedby/:userid', authMiddleware,async (req,res) => {
     
    try {
          //* find the blogs liked by user in id parameter
