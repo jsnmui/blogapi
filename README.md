@@ -69,7 +69,7 @@ These variables are needed in the .env file
 
 ## Endpoints, Parameters, Schema
 ### Routes
-In server.js, root route for the app.get(/) returns "Welcome to my API"
+In server.js, root route for app.get(/) returns "Welcome to my API"
 
 #### auth route for login and registration
 * router.post('/registration') - Register new users. userSchema is used. Password hasehd with bcrypt.hash. Token generated with jwt.sign. 
