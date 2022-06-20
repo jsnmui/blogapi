@@ -76,6 +76,9 @@ router.put('/:id',authMiddleware ,async (req, res) => {
          res.status(202).json(blog)
      } catch (error) {
          console.log(error)
+         res.status(400).json({
+            msg: 'Id not found'
+        })
      }
 })
 
@@ -94,6 +97,9 @@ router.delete('/:id', authMiddleware,async (req, res) => {
         res.status(200).json( {msg: `Blog # ${id} was deleted`})
     } catch (error) {
         console.log(error);
+        res.status(400).json({
+            msg: 'Id not found'
+        })
     }
 })
 
@@ -130,6 +136,9 @@ router.put('/like/:blogid', authMiddleware,async (req,res) => {
        // }
        } catch (error) {
          console.log(error)
+         res.status(400).json({
+            msg: 'Id not found'
+        })
       }
 
 })
@@ -146,6 +155,33 @@ router.get('/likedby/:userid', authMiddleware,async (req,res) => {
        
        } catch (error) {
          console.log(error)
+         res.status(400).json({
+            msg: 'Id not found'
+        })
+      }
+
+})
+
+
+// Add a comment to a blog post
+ 
+router.put('/addcomment/:id', authMiddleware,async (req,res) => {
+    const id = req.params.id
+    const newComment= req.body
+    newComment.creator_id = req.user.id
+    try {
+         //* find the BLOG by the id
+         //* allow user to like a blog post only once
+        let blog = await blogModel.findById(id)// find the blog
+        blog.comments.push(newComment)
+        blog.save()     // save update to database
+        res.status(202).json(blog)
+       
+       } catch (error) {
+         console.log(error)
+         res.status(400).json({
+            msg: 'Id not found'
+        })
       }
 
 })
