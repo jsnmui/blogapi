@@ -83,7 +83,7 @@ In server.js, root route for app.get(/) returns "Welcome to my API"
 
 
 #### blogs route
-* get('/') - Retrieves all blogs. User must be registered and have a valid token. 
+* get('/') - Retrieves all blogs. User must be registered and have a valid token. Sorted by date in descending order.
 * get('/nonprivate') - Gets public blogs. Doesn't require registration token.
 * post('/') - Creates a new blog post. User needs to be registered and have a valid token.
 * get('/:id') - Get a blogs by sending the blog id as the parameter. User needs to be registered and have a valid token.
