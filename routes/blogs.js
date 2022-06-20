@@ -9,7 +9,6 @@ const router = express.Router()
 router.get('/', authMiddleware,async (req,res) => {
     try {
         const blogs = await blogModel.find().sort({"created_at": -1})  // retrieves all blogs sorted by creation date in decending order. 
-                                                                       // Sorting only works on local machine and not Heroku
         res.status(200).json(blogs)
     } catch (error) {
         console.log(error)
