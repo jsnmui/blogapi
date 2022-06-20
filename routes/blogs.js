@@ -19,7 +19,7 @@ router.get('/', authMiddleware,async (req,res) => {
 //* Get NONPRIVATE Blogs
 router.get('/nonprivate', async (req,res) => {
     try {
-        const blogs = await blogModel.find({ private: false })
+        const blogs = await blogModel.find({ private: false }).sort({"created_at": -1})  // retrieves all public blogs sorted by creation date in decending order.
         res.status(200).json(blogs)
     } catch (error) {
         console.log(error)
