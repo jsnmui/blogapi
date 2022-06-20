@@ -72,26 +72,26 @@ These variables are needed in the .env file
 In server.js, root route for app.get(/) returns "Welcome to my API"
 
 #### auth route for login and registration
-* router.post('/registration') - Register new users. userSchema is used. Password hasehd with bcrypt.hash. Token generated with jwt.sign. 
-* router.post('/login') - Login with user's email and password. Token generated with jwt.sign
+* post('/registration') - Register new users. userSchema is used. Password hasehd with bcrypt.hash. Token generated with jwt.sign. 
+* post('/login') - Login with user's email and password. Token generated with jwt.sign
 
 #### users route
-* router.get('/') - Must be a registered user with a valid token to get all users.
-* router.get('/:id') - Get a user by setting parameter id to the user's id. Must be a registered user with a valid token.
-* router.put('/:id') - Updates a user. Must be a registered user with a valid token. Check id parameter to see if the user is owner of the account and updates user information. 
-* router.delete('/:id') - Deletes a user.  Protected with token. Check id parameter to see if the user is owner of the account and deletes user account.
+* get('/') - Must be a registered user with a valid token to get all users.
+* get('/:id') - Get a user by setting parameter id to the user's id. Must be a registered user with a valid token.
+* put('/:id') - Updates a user. Must be a registered user with a valid token. Check id parameter to see if the user is owner of the account and updates user information. 
+* delete('/:id') - Deletes a user.  Protected with token. Check id parameter to see if the user is owner of the account and deletes user account.
 
 
 #### blogs route
-* route.get('/') - Retrieves all blogs. User must be registered and have a valid token. 
-* router.get('/nonprivate') - Gets public blogs. Doesn't require registration token.
-* router.post('/') - Creates a new blog post. User needs to be registered and have a valid token.
-* router.get('/:id') - Get a blogs by sending the blog id as the parameter. User needs to be registered and have a valid token.
-* router.put('/:id') - Update a blog by sending the blog id as the parameter. User needs to be registered and have a valid token.
-* router.delete('/:id') - Delete a blog by sending the blog id as the parameter. User needs to be registered and have a valid token.
-* router.put('/like/:blogid') - Allows a registered user to like a blog post and increase the like counter for a post.  Each user can like a post only once. Takes the blog id as the parameter. A user can like a post by sending the id. A user can remove the same like by sending the id again. 
-* router.get('/likedby/:userid') - Allows a registered user to find all blog posts liked by another user. Takes a user id as a parameter. 
-* router.put('/addcomment/:id') - Allows a registered user to add a comment to a post. Needs a blog id as a parameter. 
+* get('/') - Retrieves all blogs. User must be registered and have a valid token. 
+* get('/nonprivate') - Gets public blogs. Doesn't require registration token.
+* post('/') - Creates a new blog post. User needs to be registered and have a valid token.
+* get('/:id') - Get a blogs by sending the blog id as the parameter. User needs to be registered and have a valid token.
+* put('/:id') - Update a blog by sending the blog id as the parameter. User needs to be registered and have a valid token.
+* delete('/:id') - Delete a blog by sending the blog id as the parameter. User needs to be registered and have a valid token.
+* put('/like/:blogid') - Allows a registered user to like a blog post and increase the like counter for a post.  Each user can like a post only once. Takes the blog id as the parameter. A user can like a post by sending the id. A user can remove the same like by sending the id again. 
+* get('/likedby/:userid') - Allows a registered user to find all blog posts liked by another user. Takes a user id as a parameter. 
+* put('/addcomment/:id') - Allows a registered user to add a comment to a post. Needs a blog id as a parameter. 
 
 ### Schemas
 #### userSchema
