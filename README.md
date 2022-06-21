@@ -9,6 +9,7 @@ This app is deployed on Heroku at [BlogAPI](https://jmui-blog.herokuapp.com/ "Bl
 ### Server
 * Node.js - an open source asynchronous event-driven server environment that executes JavaScript code outside a web browser. 
 * Express - a back end web application framework for Node.js
+* Nodemon - a tool that automatically restarts a node application when file changes in the directory are detected.
 
 ### Database 
 * MongoDB - a non-relational document database that stores data in a format similar to Javascript Object Notation.
