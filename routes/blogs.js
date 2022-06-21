@@ -123,7 +123,7 @@ router.put('/like/:blogid', authMiddleware,async (req,res) => {
                 } else  {
                         element.like = true
                         blog.likes++
-                        msg = `Blog #${id} was liked by used ${req.user.id}.`
+                        msg = `Blog #${id} was liked by user ${req.user.id}.`
                     }
                  }
               }) 
