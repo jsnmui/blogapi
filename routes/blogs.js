@@ -111,16 +111,19 @@ router.put('/like/:blogid', authMiddleware,async (req,res) => {
          //* find the BLOG by the id
          //* allow user to like a blog post only once
         let blog = await blogModel.findById(id)// find the blog
-        let found = false                  
+        let found = false   
+        let msg = ""               
              blog.likesHistory.forEach(element => {            // search like history to determine is user already liked post
                if(element.user_id.toString() === req.user.id){
                 found = true 
                 if (element.like === true) {                   //toggle       
                         element.like = false
                         blog.likes--
+                        msg = `Blog ${id} was unliked.`  
                 } else  {
                         element.like = true
                         blog.likes++
+                        msg = `Blog ${id} was liked.`
                     }
                  }
               }) 
@@ -132,8 +135,11 @@ router.put('/like/:blogid', authMiddleware,async (req,res) => {
         }
        
             blog.save()     // save update to database
-            res.status(202).json(blog)
-       // }
+            res.status(202).json({
+                blog: blog,
+                msg: msg
+            })
+       
        } catch (error) {
          console.log(error)
          res.status(400).json({
