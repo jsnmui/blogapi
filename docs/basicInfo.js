@@ -4,8 +4,9 @@ module.exports = {
       title: "Blog API", // short title.
       description: "A Blog API", //  desc.
       version: "1.0.0", // version number
-      creator: {
+      contact: {
         name: "Jason Mui", // your name
+        email: "jason@web.com",
         url: "https://jmui-blog.herokuapp.com", // your website
       },
     },
