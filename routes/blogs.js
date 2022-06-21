@@ -132,6 +132,7 @@ router.put('/like/:blogid', authMiddleware,async (req,res) => {
             let like = { "user_id" : req.user.id, "like": true   }
             blog.likesHistory.push(like)
             blog.likes++
+            msg = `Blog #${id} was liked by user ${req.user.id}.`
         }
        
             blog.save()     // save update to database
