@@ -152,7 +152,7 @@ router.get('/likedby/:userid', authMiddleware,async (req,res) => {
         let blog = await blogModel.find({ "likesHistory.user_id": req.params.userid, "likesHistory.like": true })// find the blogs like by a user
        
          if (!blog) {
-            res.status(400).json({
+          return  res.status(400).json({
                 msg: 'No blogs found'
             })
          }
