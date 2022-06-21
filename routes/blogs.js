@@ -119,11 +119,11 @@ router.put('/like/:blogid', authMiddleware,async (req,res) => {
                 if (element.like === true) {                   //toggle       
                         element.like = false
                         blog.likes--
-                        msg = `Blog ${id} was unliked.`  
+                        msg = `Blog #${id} was unliked by user ${req.user.id}.`  
                 } else  {
                         element.like = true
                         blog.likes++
-                        msg = `Blog ${id} was liked.`
+                        msg = `Blog #${id} was liked by used ${req.user.id}.`
                     }
                  }
               }) 
