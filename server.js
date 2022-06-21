@@ -21,7 +21,7 @@ app.use(helmet())
 app.use('/blogs', blogs)   //handles blog requests
 app.use('/users', users)   //requests on user accounts  
 app.use('/auth', auth)     // login an registration requests
-app.use('/apidocs', apidocs) // swagger document requests
+app.use('/apidocs', apidocs) // basic info about api for swagger
 
 //* Root route for the APP
 app.get('/', (req, res) => {
